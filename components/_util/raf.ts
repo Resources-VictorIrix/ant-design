@@ -5,6 +5,14 @@ interface RafMap {
 let id: number = 0;
 const ids: RafMap = {};
 
+let raf = (fn: () => void) => +setTimeout(fn, 16);
+let caf = (num: number) => clearTimeout(num);
+
+if (typeof window === 'undefined') {
+  raf = requestAnimationFrame;
+  caf = cancelAnimationFrame;
+}
+
 // Support call raf with delay specified frame
 export default function wrapperRaf(callback: () => void, delayFrames: number = 1): number {
   const myId: number = id++;
@@ -17,11 +25,11 @@ export default function wrapperRaf(callback: () => void, delayFrames: number = 1
       callback();
       delete ids[myId];
     } else {
-      ids[myId] = requestAnimationFrame(internalCallback);
+      ids[myId] = raf(internalCallback);
     }
   }
 
-  ids[myId] = requestAnimationFrame(internalCallback);
+  ids[myId] = raf(internalCallback);
 
   return myId;
 }
@@ -29,7 +37,7 @@ export default function wrapperRaf(callback: () => void, delayFrames: number = 1
 wrapperRaf.cancel = function cancel(pid?: number) {
   if (pid === undefined) return;
 
-  cancelAnimationFrame(ids[pid]);
+  caf(ids[pid]);
   delete ids[pid];
 };
 
