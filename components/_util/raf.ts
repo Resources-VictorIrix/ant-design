@@ -8,7 +8,7 @@ const ids: RafMap = {};
 let raf = (fn: () => void) => +setTimeout(fn, 16);
 let caf = (num: number) => clearTimeout(num);
 
-if (typeof window === 'undefined') {
+if (typeof window !== 'undefined') {
   raf = requestAnimationFrame;
   caf = cancelAnimationFrame;
 }
