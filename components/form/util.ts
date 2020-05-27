@@ -1,5 +1,4 @@
 import * as React from 'react';
-import raf from 'raf';
 import { useForm as useRcForm, FormInstance as RcFormInstance } from 'rc-field-form';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import { ScrollOptions } from './interface';
@@ -114,7 +113,7 @@ export function useFrameState<ValueType>(
   React.useEffect(
     () => () => {
       destroyRef.current = true;
-      raf.cancel(frameRef.current!);
+      cancelAnimationFrame(frameRef.current!);
     },
     [],
   );
@@ -126,7 +125,7 @@ export function useFrameState<ValueType>(
 
     if (frameRef.current === null) {
       batchRef.current = [];
-      frameRef.current = raf(() => {
+      frameRef.current = requestAnimationFrame(() => {
         frameRef.current = null;
         setValue(prevValue => {
           let current = prevValue;

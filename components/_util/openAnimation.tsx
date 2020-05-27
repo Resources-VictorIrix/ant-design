@@ -3,7 +3,6 @@
  * If you are creating new component with animation, please use `./motion`.
  */
 import cssAnimation from '@ant-design/css-animation';
-import raf from 'raf';
 
 function animate(node: HTMLElement, show: boolean, done: () => void) {
   let height: number;
@@ -21,16 +20,16 @@ function animate(node: HTMLElement, show: boolean, done: () => void) {
     },
     active() {
       if (requestAnimationFrameId) {
-        raf.cancel(requestAnimationFrameId);
+        cancelAnimationFrame(requestAnimationFrameId);
       }
-      requestAnimationFrameId = raf(() => {
+      requestAnimationFrameId = requestAnimationFrame(() => {
         node.style.height = `${show ? height : 0}px`;
         node.style.opacity = show ? '1' : '0';
       });
     },
     end() {
       if (requestAnimationFrameId) {
-        raf.cancel(requestAnimationFrameId);
+        cancelAnimationFrame(requestAnimationFrameId);
       }
       node.style.height = '';
       node.style.opacity = '';
