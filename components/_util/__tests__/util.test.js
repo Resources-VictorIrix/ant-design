@@ -1,8 +1,6 @@
-import raf from 'raf';
 import React from 'react';
 import { mount } from 'enzyme';
 import KeyCode from 'rc-util/lib/KeyCode';
-import delayRaf from '../raf';
 import throttleByAnimationFrame from '../throttleByAnimationFrame';
 import getDataOrAriaProps from '../getDataOrAriaProps';
 import Wave from '../wave';
@@ -89,37 +87,37 @@ describe('Test utils function', () => {
     });
   });
 
-  it('delayRaf', done => {
-    jest.useRealTimers();
+  // it('delayRaf', done => {
+  //   jest.useRealTimers();
 
-    let bamboo = false;
-    delayRaf(() => {
-      bamboo = true;
-    }, 3);
+  //   let bamboo = false;
+  //   delayRaf(() => {
+  //     bamboo = true;
+  //   }, 3);
 
-    // Do nothing, but insert in the frame
-    // https://github.com/ant-design/ant-design/issues/16290
-    delayRaf(() => {}, 3);
+  //   // Do nothing, but insert in the frame
+  //   // https://github.com/ant-design/ant-design/issues/16290
+  //   delayRaf(() => {}, 3);
 
-    // Variable bamboo should be false in frame 2 but true in frame 4
-    raf(() => {
-      expect(bamboo).toBe(false);
+  //   // Variable bamboo should be false in frame 2 but true in frame 4
+  //   raf(() => {
+  //     expect(bamboo).toBe(false);
 
-      // Frame 2
-      raf(() => {
-        expect(bamboo).toBe(false);
+  //     // Frame 2
+  //     raf(() => {
+  //       expect(bamboo).toBe(false);
 
-        // Frame 3
-        raf(() => {
-          // Frame 4
-          raf(() => {
-            expect(bamboo).toBe(true);
-            done();
-          });
-        });
-      });
-    });
-  });
+  //       // Frame 3
+  //       raf(() => {
+  //         // Frame 4
+  //         raf(() => {
+  //           expect(bamboo).toBe(true);
+  //           done();
+  //         });
+  //       });
+  //     });
+  //   });
+  // });
 
   describe('wave', () => {
     it('bindAnimationEvent should return when node is null', () => {
