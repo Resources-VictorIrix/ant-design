@@ -1,3 +1,4 @@
+import raf from './raf';
 import getScroll, { isWindow } from './getScroll';
 import { easeInOutCubic } from './easings';
 
@@ -29,10 +30,10 @@ export default function scrollTo(y: number, options: ScrollToOptions = {}) {
       (container as HTMLElement).scrollTop = nextScrollTop;
     }
     if (time < duration) {
-      requestAnimationFrame(frameFunc);
+      raf(frameFunc);
     } else if (typeof callback === 'function') {
       callback();
     }
   };
-  requestAnimationFrame(frameFunc);
+  raf(frameFunc);
 }
