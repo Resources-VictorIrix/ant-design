@@ -1,3 +1,4 @@
+import raf from 'raf';
 import React from 'react';
 import { mount } from 'enzyme';
 import KeyCode from 'rc-util/lib/KeyCode';
@@ -101,17 +102,17 @@ describe('Test utils function', () => {
     delayRaf(() => {}, 3);
 
     // Variable bamboo should be false in frame 2 but true in frame 4
-    requestAnimationFrame(() => {
+    raf(() => {
       expect(bamboo).toBe(false);
 
       // Frame 2
-      requestAnimationFrame(() => {
+      raf(() => {
         expect(bamboo).toBe(false);
 
         // Frame 3
-        requestAnimationFrame(() => {
+        raf(() => {
           // Frame 4
-          requestAnimationFrame(() => {
+          raf(() => {
             expect(bamboo).toBe(true);
             done();
           });
