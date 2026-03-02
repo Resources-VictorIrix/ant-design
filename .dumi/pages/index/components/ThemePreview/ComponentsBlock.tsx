@@ -4,6 +4,7 @@ import {
   Alert,
   App,
   Button,
+  Card,
   Checkbox,
   ColorPicker,
   ConfigProvider,
@@ -101,9 +102,19 @@ const ComponentsBlock: React.FC<ComponentsBlockProps> = (props) => {
   const { styles } = useStyle();
   const { config, style, className, containerClassName } = props;
 
+  const { theme, ...restConfig } = config || {};
+
+  const mergedTheme = React.useMemo(
+    () => ({
+      ...theme,
+      inherit: false,
+    }),
+    [theme],
+  );
+
   return (
-    <ConfigProvider {...config}>
-      <div className={clsx(containerClassName, styles.container)}>
+    <ConfigProvider {...restConfig} theme={mergedTheme}>
+      <Card className={clsx(containerClassName, styles.container)}>
         <App>
           <Flex vertical gap="middle" style={style} className={className}>
             <ModalPanel title="Ant Design" width="100%">
@@ -215,7 +226,7 @@ const ComponentsBlock: React.FC<ComponentsBlockProps> = (props) => {
             </Flex>
           </Flex>
         </App>
-      </div>
+      </Card>
     </ConfigProvider>
   );
 };
