@@ -20,6 +20,7 @@ description: Help maintainers reply to Ant Design GitHub issues following offici
 ### 一、首次回复
 
 对满足以下**所有条件**的 issues 进行回复：
+
 1. Issue 状态为 **open**
 2. 没有人类维护者（MEMBER/OWNER/CONTRIBUTOR）回复过
 
@@ -28,11 +29,13 @@ description: Help maintainers reply to Ant Design GitHub issues following offici
 对于已有 MEMBER/CONTRIBUTOR 回复的 issues，也要检查是否处理妥当：
 
 **需要关注的情况：**
+
 1. 维护者已提出问题/解决方案，但用户**长时间（7天以上）**未回复
 2. 问题已明确被解决（用户确认或版本已修复）
 3. 维护者已说明这不是 bug，但 issue 仍然 open
 
 **处理方式：**
+
 - 用户长时间未回复 → 关闭 issue 并留言说明
 - 问题已解决 → 关闭 issue
 - 使用问题但已提供解决方案 → 关闭 issue
@@ -52,12 +55,14 @@ description: Help maintainers reply to Ant Design GitHub issues following offici
 ```
 
 **常见误区：**
+
 - ❌ 不要因为 issue-helper 模板是中文就用中文回复
 - ❌ 不要因为后续评论使用了某种语言就跟随
 - ❌ 不要因为 dosubot 使用了某种语言就跟随
 - ✅ 只看 issue 作者在 body 中描述问题时使用的语言
 
 **示例：**
+
 ```
 Issue body:
   "What is expected?" → "22.01.2026"  (英文)
@@ -75,6 +80,7 @@ Issue body:
 Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 
 **使用问题的建议渠道：**
+
 - [常见问题](https://ant.design/docs/react/faq-cn/)
 - [StackOverflow](https://stackoverflow.com/questions/tagged/antd)（英文）
 - [SegmentFault](https://segmentfault.com/t/antd)（中文）
@@ -84,6 +90,7 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 ## 处理 dosubot 回复
 
 如果 dosubot 已经回复过：
+
 1. **审核回复的准确性**
 2. 正确 → 确认背书："感谢 @dosu 的分析，确认这是正确的解决方案。"
 3. 不正确 → 提供更正："感谢 @dosu，但需要补充说明..."
@@ -98,9 +105,11 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 ### Bug 报告
 
 **首先检查版本：**
+
 - 老版本 + changelog 中已修复 → 引导用户升级验证
 
 **检查重现链接：**
+
 - 缺少/无关 → 添加 `🤔 Need Reproduce`，请求提供
 - 有重现 + 确认 bug → 添加 `🐛 Bug` 标签
 
@@ -112,14 +121,17 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 ### 使用问题
 
 **你可以尝试解决和回复使用问题：**
+
 - 查阅文档，提供解决方案和代码示例
 - 如果能解决，直接回复帮助用户
 
 **也可以引入 AI 帮助解答：**
+
 - `@docu` - GitHub Copilot 文档助手
 - `@Copilot` - GitHub Copilot
 
 回复示例：
+
 ```
 感谢反馈！这是一个使用问题，让我尝试帮你解答：
 
@@ -131,12 +143,14 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 ```
 
 **若无法解决，引导用户到其他渠道：**
+
 - [常见问题](https://ant.design/docs/react/faq-cn/)
 - [StackOverflow](https://stackoverflow.com/questions/tagged/antd) 或 [SegmentFault](https://segmentfault.com/t/antd)
 
 ### FAQ 问题
 
 **查找资源顺序：**
+
 1. 带 `❓FAQ` 标签的 issues
 2. 组件文档 FAQ 部分
 3. [常见问题汇总](https://ant.design/docs/react/faq-cn/)
@@ -145,12 +159,13 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 
 ## Bug vs Feature Request 分类
 
-| 类型 | 特征 |
-|------|------|
-| **Bug** | 使用现有功能，行为不符合预期；之前正常现在坏了 |
-| **Feature Request** | 需要目前不存在的新能力 |
+| 类型                | 特征                                           |
+| ------------------- | ---------------------------------------------- |
+| **Bug**             | 使用现有功能，行为不符合预期；之前正常现在坏了 |
+| **Feature Request** | 需要目前不存在的新能力                         |
 
 **示例：**
+
 - Cascader onFocus 不触发 → **Bug**（现有功能不工作）
 - 添加 DatePicker 键盘导航 → **Feature Request**（新能力）
 
@@ -169,9 +184,11 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 ## 关闭 Issues（需谨慎！）
 
 **关闭前必须检查：**
+
 1. ⚠️ **确认使用正确的语言**（参考语言政策）
 
 **可关闭：**
+
 - 重复问题
 - 确定不是 bug（使用问题）
 - 已解决
@@ -180,6 +197,7 @@ Issue 列表主要用于跟踪 **Bug 报告** 和 **功能请求**。
 **关闭时保持礼貌：**
 
 问题已解决（英文示例）：
+
 ```
 Thanks for the feedback! This issue has been fixed in [version/PR#xxx].
 
@@ -187,6 +205,7 @@ I'm closing this issue. Feel free to continue the discussion if you have further
 ```
 
 使用问题（中文示例）：
+
 ```
 感谢反馈！经过分析，这是一个使用问题而非 bug。
 
@@ -196,6 +215,7 @@ I'm closing this issue. Feel free to continue the discussion if you have further
 ```
 
 用户长时间未回复（中文示例）：
+
 ```
 由于长时间未收到回复，我将关闭此 issue。
 
@@ -203,6 +223,7 @@ I'm closing this issue. Feel free to continue the discussion if you have further
 ```
 
 **不要关闭：**
+
 - 不确定是否是 bug
 - 用户未确认解决方案有效（且未超过等待时间）
 - 有效的功能请求
